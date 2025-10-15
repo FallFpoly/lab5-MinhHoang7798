@@ -16,7 +16,7 @@ public class bai1 {
         Scanner sc = new Scanner(System.in);
         ArrayList<Double> list = new ArrayList<>();
         while (true) {
-            System.out.print("Nhap so thuc: ");
+            System.out.print("\nNhap so thuc: ");
             double x = sc.nextDouble();
             list.add(x);
 
@@ -28,11 +28,11 @@ public class bai1 {
             }
         }
         double tong = 0;
-        System.out.println("Ds vua nhap : ");
+        System.out.println("\nDs so vua nhap : ");
         for (Double so : list) {
             System.out.println(so);
             tong += so;
         }
-        System.out.println("Tong = " + tong);
+        System.out.println("\n=> Tong = " + tong);
     }
 }

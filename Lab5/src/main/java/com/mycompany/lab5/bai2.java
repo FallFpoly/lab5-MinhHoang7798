@@ -23,15 +23,18 @@ public class bai2 {
     }
 
     static void menu() {
+
+        System.out.println("\n------------Danh sach chuc nang-------------");
         System.out.println("1. Nhap ds ho va ten SV");
         System.out.println("2. Xuat ds SV vua nhap");
         System.out.println("3. Xuat ds SV ngau nhien");
         System.out.println("4. Sap xep ds SV giam dan va xuat ds SV");
         System.out.println("5. Tim va xoa ho ten DS SV nhap tu ban phim");
         System.out.println("6. Ket thuc");
-        System.out.print("Chon: ");
+        System.out.println("\n+-------------------------------------------+");
+        System.out.print("Chon chuc nang : ");
         int chon = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         switch (chon) {
             case 1:
@@ -55,11 +58,11 @@ public class bai2 {
     }
 
     static void nhap() {
-        System.out.print("Nhap SL ho ten SV : ");
+        System.out.print("\nNhap SL ho ten SV : ");
         int n = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         for (int i = 0; i < n; i++) {
-            System.out.print("Nhap ho ten SV : " + (i + 1) + ": ");
+            System.out.print("Nhap ho ten SV " + (i + 1) + ": ");
             String hoten = scanner.nextLine();
             list.add(hoten);
         }
@@ -67,7 +70,7 @@ public class bai2 {
 
     static void xuat() {
         for (String hoten : list) {
-            System.out.println(hoten);
+            System.out.println("\n" + hoten);
         }
     }
 
@@ -83,7 +86,7 @@ public class bai2 {
     }
 
     static void xoa() {
-        System.out.print("Nhap ho ten SV can xoa: ");
+        System.out.print("\nNhap ho ten SV can xoa: ");
         String hoten = scanner.nextLine();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(hoten)) {
