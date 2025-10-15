@@ -11,33 +11,29 @@ import java.util.Map;
  * @author ICT
  */
 public class bai4 {
-
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("PC08044", "Ly Chi Thanh");
         map.put("PC08122", "Nguyen Thanh Dat");
         map.put("PC08503", "Nguyen Nhat Tien");
         map.put("PC09014", "Nguyen Van Vi");
-
-        System.out.println("PC08503: " + map.get("PC08503"));
-
-        for (String key : map.keySet()) {
-            if (map.get(key).equals("Nguyen Thanh Dat")) {
-                System.out.println("Ma cua Nguyen Thanh Dat: " + key);
+        
+        System.out.println("Ten SV ma PC08503: " + map.get("PC08503"));
+        
+        String ten = "Nguyen Thanh Dat";
+        String ma = "";
+        for(Map.Entry<String, String> entry : map.entrySet()){
+            if(entry.getValue().equals(ten)){
+                ma = entry.getKey();
+                break;
             }
         }
-
-        boolean found = false;
-        for (String value : map.values()) {
-            if (value.equals("Nguyen Van Binh")) {
-                found = true;
-            }
-        }
-        if (found) {
-            System.out.println("Co Nguyen Van Binh");
+        System.out.println("Ma cua SV co ten Nguyen Thanh Dat: " + ma);
+        
+        if(map.containsValue("Nguyen Van Binh")){
+            System.out.println("Co SV Nguyen Van Binh");
         } else {
-            System.out.println("Khong co Nguyen Van Binh");
+            System.out.println("Ko co SV Nguyen Van Binh");
         }
     }
-
 }

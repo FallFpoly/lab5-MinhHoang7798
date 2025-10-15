@@ -19,18 +19,19 @@ public class bai1 {
             System.out.print("Nhap so thuc: ");
             double x = sc.nextDouble();
             list.add(x);
-            System.out.print("Nhap tiep (Y/N)? ");
+
+            System.out.print("Nhap tiep ko (Y/N)? : ");
             sc.nextLine();
-            String tl = sc.nextLine();
-            if (tl.equalsIgnoreCase("N")) {
+            String n = sc.nextLine();
+            if (n.equalsIgnoreCase("n")) {
                 break;
             }
         }
         double tong = 0;
-        System.out.println("Ds vua nhap:");
-        for (Double d : list) {
-            System.out.println(d);
-            tong += d;
+        System.out.println("Ds vua nhap : ");
+        for (Double so : list) {
+            System.out.println(so);
+            tong += so;
         }
         System.out.println("Tong = " + tong);
     }

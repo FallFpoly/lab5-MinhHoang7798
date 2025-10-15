@@ -13,101 +13,86 @@ import java.util.Scanner;
  * @author ICT
  */
 class SanPham {
-
     String ten;
     Double gia;
-
-    public SanPham(String ten, Double gia) {
+    
+    public SanPham(String ten, Double gia){
         this.ten = ten;
         this.gia = gia;
     }
 }
 
 public class bai3 {
-
-    static ArrayList<SanPham> list = new ArrayList<>();
-
+    static ArrayList<SanPham> list = new ArrayList<SanPham>();
+    static Scanner scanner = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int chon;
-        do {
-            System.out.println("------ MENU ------");
-            System.out.println("1. Nhap ds san pham");
-            System.out.println("2. Sap xep giam dan theo gia");
-            System.out.println("3. Tim va xoa san pham theo ten");
-            System.out.println("4. Xuat gia TB");
-            System.out.println("5. Ket thuc");
+        menu();
+    }
+    
+    static void menu(){
+        while(true){
+            System.out.println("1.Nhap ds SP tu ban phim");
+            System.out.println("2.Sap xep giam dan theo gia va xuat ra");
+            System.out.println("3.Tim va xoa SP theo ten nhap tu ban phim");
+            System.out.println("4.Xuat gia TB cua cac SP");
             System.out.print("Chon: ");
-            chon = sc.nextInt();
-            sc.nextLine();
-
-            switch (chon) {
-                case 1:
-                    nhap(sc);
-                    break;
-
-                case 2:
-                    sapxep();
-                    break;
-
-                case 3:
-                    xoa(sc);
-                    break;
-
-                case 4:
-                    trungbinh();
-                    break;
-
-                case 5:
-                    System.out.println("Thoat");
-                    break;
-
-                default:
-                    System.out.println("Sai chuc nang");
+            int chon = scanner.nextInt();
+            scanner.nextLine(); // clear buffer
+            
+            switch(chon){
+                case 1: nhap(); break;
+                case 2: sapxep(); break;
+                case 3: xoa(); break;
+                case 4: trungbinh(); break;
             }
-        } while (chon != 5);
+        }
     }
-
-    public static void nhap(Scanner sc) {
-        System.out.print("Nhap ten sp: ");
-        String ten = sc.nextLine();
-        System.out.print("Nhap gia: ");
-        double gia = sc.nextDouble();
-        list.add(new SanPham(ten, gia));
+    
+    static void nhap(){
+        System.out.print("Nhap SL SP : ");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // clear buffer
+        for(int i=0; i<n; i++){
+            System.out.print("Nhap ten SP thu : " + (i+1) + ": ");
+            String ten = scanner.nextLine();
+            System.out.print("Nhap gia SP thu : " + (i+1) + ": ");
+            Double gia = scanner.nextDouble();
+            scanner.nextLine(); // clear buffer
+            list.add(new SanPham(ten, gia));
+        }
     }
-
-    public static void sapxep() {
+    
+    static void sapxep(){
         Comparator<SanPham> comp = new Comparator<SanPham>() {
-
             @Override
             public int compare(SanPham o1, SanPham o2) {
-                return o2.gia.compareTo(o1.gia);
+                return o1.gia.compareTo(o2.gia);
             }
         };
         Collections.sort(list, comp);
-        for (SanPham sp : list) {
-            System.out.println(sp.ten + " - " + sp.gia);
+        Collections.reverse(list);
+        for(SanPham sp : list){
+            System.out.println(sp.ten + " " + sp.gia);
         }
     }
-
-    public static void xoa(Scanner sc) {
-        System.out.print("Nhap ten sp can xoa: ");
-        String ten = sc.nextLine();
-        for (SanPham sp : list) {
-            if (sp.ten.equalsIgnoreCase(ten)) {
-                list.remove(sp);
-                System.out.println("Da xoa " + ten);
+    
+    static void xoa(){
+        System.out.print("Nhap ten SP can xoa : ");
+        String ten = scanner.nextLine();
+        for(int i=0; i<list.size(); i++){
+            if(list.get(i).ten.equals(ten)){
+                list.remove(i);
                 break;
             }
         }
     }
-
-    public static void trungbinh() {
+    
+    static void trungbinh(){
         double tong = 0;
-        for (SanPham sp : list) {
+        for(SanPham sp : list){
             tong += sp.gia;
         }
-        double tb = tong / list.size();
-        System.out.println("Gia trung binh = " + tb);
+        System.out.println("Gia TB = " + (tong / list.size()));
     }
 }
