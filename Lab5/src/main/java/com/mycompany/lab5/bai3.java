@@ -34,7 +34,7 @@ public class bai3 {
 
     static void menu() {
         while (true) {
-       
+
             System.out.println("\n----------Danh sach chuc nang--------------");
             System.out.println("1.Nhap ds SP tu ban phim");
             System.out.println("2.Sap xep giam dan theo gia va xuat ra");
@@ -43,7 +43,7 @@ public class bai3 {
             System.out.println("\n-------------------------------------------");
             System.out.print("Chon chuc nang : ");
             int chon = scanner.nextInt();
-            scanner.nextLine(); // clear buffer
+            scanner.nextLine(); 
 
             switch (chon) {
                 case 1:
@@ -65,13 +65,13 @@ public class bai3 {
     static void nhap() {
         System.out.print("\nNhap SL SP : ");
         int n = scanner.nextInt();
-        scanner.nextLine(); // clear buffer
+        scanner.nextLine(); 
         for (int i = 0; i < n; i++) {
             System.out.print("\nNhap Ten SP " + (i + 1) + ": ");
             String ten = scanner.nextLine();
             System.out.print("Nhap Gia(VND)SP " + (i + 1) + ": ");
             Double gia = scanner.nextDouble();
-            scanner.nextLine(); // clear buffer
+            scanner.nextLine(); 
             list.add(new SanPham(ten, gia));
         }
     }
